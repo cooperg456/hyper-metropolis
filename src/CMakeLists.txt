@@ -1,16 +1,12 @@
 ##	---------------------------------------------------
 ##	--	Build Hyper Metropolis library: libmetro
 ##	---------------------------------------------------
-file(GLOB CONFIGURE_DEPENDS CPP_FILES "${CMAKE_CURRENT_LIST_DIR}/*.cpp")
-file(GLOB CONFIGURE_DEPENDS CUDA_FILES "${CMAKE_CURRENT_LIST_DIR}/*.cu")
-
 add_library(libmetro)
 add_library(hyper::metropolis ALIAS libmetro)
 
 target_sources(libmetro 
 PRIVATE 
-	${CPP_FILES} 
-	${CUDA_FILES} 
+	hamiltonian.cpp 
 )
 
 target_include_directories(libmetro
