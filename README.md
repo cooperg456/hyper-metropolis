@@ -1,5 +1,5 @@
 # hyper-metropolis
-C++ library for Markov chain Monte Carlo methods on LDPC codes
+Header only C++ library for Markov chain Monte Carlo methods on LDPC codes
 
 ----------------------------------------------------------------------
 
