@@ -6,15 +6,22 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-string(COMPARE EQUAL "${CMAKE_CURRENT_SOURCE_DIR}" "${CMAKE_SOURCE_DIR}" METRO_STANDALONE)
+option(METRO_BUILD_TESTS "Build test programs" ON)
 
-option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
-option(METRO_BUILD_TESTS "Build test programs" ${METRO_STANDALONE})
+# ---------------------------------------------------
+# -- header only library
+# ---------------------------------------------------
+
+add_library(metrolib INTERFACE)
+add_library(hyper::metropolis ALIAS metrolib)
+
+target_include_directories(metrolib INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/include)
+
+target_compile_features(metrolib INTERFACE cxx_std_17)
 
 ##	---------------------------------------------------
-##	--	Add subdirectories
+##	--	add subdirectories
 ##	---------------------------------------------------
-add_subdirectory(src)
 
 if (METRO_BUILD_TESTS)
 	add_subdirectory(tests)
