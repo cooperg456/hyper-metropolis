@@ -65,12 +65,23 @@ namespace hamiltonian {
 	/// @brief hamiltonian for classical LDPC codes
 	class LDPC : public Base<LDPC> {
 	public:
-		
+
 		///	@brief construct a new LDPC hamiltonian
 		///	@param checks vector of parity checks
 		LDPC(const std::vector<std::vector<uint32_t>> &checks) 
 			: parchk(checks), nchks(static_cast<uint32_t>(parchk.size())), 
-			parchkT(transpose(checks)), nbits(static_cast<uint32_t>(parchkT.size())) {}
+			parchkT(transpose(checks)), nbits(static_cast<uint32_t>(parchkT.size())) {
+			std::vector<uint32_t> state(nbits);
+			set_state(state);
+		}
+		
+		///	@brief construct a new LDPC hamiltonian
+		///	@param checks vector of parity checks
+		LDPC(const std::vector<std::vector<uint32_t>> &checks, std::vector<uint32_t> &state) 
+			: parchk(checks), nchks(static_cast<uint32_t>(parchk.size())), 
+			parchkT(transpose(checks)), nbits(static_cast<uint32_t>(parchkT.size())) {
+			set_state(state);
+		}
 
 		//  ----------  ----------  implementations  ----------  ----------  //
 

@@ -2,7 +2,7 @@
 ##	--	Build Hyper Metropolis test executables
 ##	---------------------------------------------------
 set(TEST_SOURCES
-    hamming.cpp
+    annealing.cpp
 )
 
 foreach(SRC_FILE IN LISTS TEST_SOURCES)
